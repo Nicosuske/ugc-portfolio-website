@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="fotos/hero-see.jpg">
 <style>
   body { margin: 0; background: #1a2013; -webkit-font-smoothing: antialiased; }
   html { scroll-behavior: smooth; }
@@ -85,10 +86,8 @@
         <p style="font-size: clamp(16px, 1.5vw, 22px); font-weight: 800; margin: 0 0 26px; color: #f4efe0; text-wrap: pretty;">Content, der verkauft, ohne wie Werbung zu klingen</p>
         <a href="#kontakt" style="display: inline-block; background: #f4efe0; color: #1a2013; font-weight: 700; font-size: 15px; letter-spacing: 0.18em; text-transform: uppercase; padding: 20px 58px; border-radius: 999px;">Kontakt aufnehmen</a>
       </div>
-      <div style="position: absolute; inset: 0; z-index: 0; overflow: hidden;">
-        <img data-hero-blur-img="true" src="fotos/hero-see.jpg" style="position: absolute; inset: -5%; width: 110%; height: 110%; object-fit: cover; object-position: 68% 38%; filter: blur(22px);">
-      </div>
-      <img data-hero-img="true" src="fotos/hero-see.jpg" alt="Nico am See" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 68% 38%; transform: scale(0.82); transform-origin: 68% 50%; z-index: 1;">
+      <div style="position: absolute; inset: 0; z-index: 0; overflow: hidden; background-image: url('fotos/hero-see.jpg'); background-size: cover; background-position: 68% 38%; filter: blur(22px); transform: scale(1.05);"></div>
+      <img data-hero-img="true" src="fotos/hero-see.jpg" alt="Nico am See" fetchpriority="high" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 68% 38%; transform: scale(0.82); transform-origin: 68% 50%; z-index: 1;">
       <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(26,32,19,0.3) 0%, rgba(26,32,19,0.22) 40%, rgba(26,32,19,0.72) 100%); z-index: 2;"></div>
     </div>
   </section>
@@ -128,9 +127,9 @@
       <div style="display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr); gap: 18px; align-items: start;">
         <video src="videos/0922(2).mp4" controls playsinline preload="metadata" style="width: 100%; max-width: 300px; margin: 0 auto; aspect-ratio: 9/16; object-fit: cover; border-radius: 10px; background: #e8ddc0; display: block;"></video>
         <div style="display: flex; flex-direction: column; gap: 18px;">
-          <img src="fotos/wald-koda.jpg" alt="Nico mit Koda im Wald" style="width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 8px; display: block;">
-          <img src="fotos/stadt-pferd-trim.jpg" alt="Nico in der Stadt" style="width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: 50% 30%; border-radius: 8px; display: block;">
-          <img src="fotos/berg-sitzend.jpg" alt="Nico in den Bergen" style="width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 8px; display: block;">
+          <img src="fotos/wald-koda.jpg" alt="Nico mit Koda im Wald" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 8px; display: block;">
+          <img src="fotos/stadt-pferd-trim.jpg" alt="Nico in der Stadt" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: 50% 30%; border-radius: 8px; display: block;">
+          <img src="fotos/berg-sitzend.jpg" alt="Nico in den Bergen" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 8px; display: block;">
         </div>
       </div>
     </div>
@@ -170,10 +169,10 @@
       <h3 style="font-family: Anton, sans-serif; font-size: clamp(28px, 3vw, 44px); text-transform: uppercase; margin: 0 0 32px; text-align: center;">Organische Views 🤯</h3>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 18px; max-width: 900px; margin: 0 auto;">
-        <img src="insights/view-2.jpg" alt="595 Tsd. Aufrufe" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; display: block;">
-        <img src="insights/view-4.jpg" alt="877,8 Tsd. Aufrufe auf TikTok" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; object-position: 50% 100%; border-radius: 8px; display: block;">
-        <img src="insights/view-3.jpg" alt="446 Tsd. Aufrufe" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; display: block;">
-        <img src="insights/view-1.jpg" alt="150 Tsd. Aufrufe" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; display: block;">
+        <img src="insights/view-2.jpg" alt="595 Tsd. Aufrufe" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; display: block;">
+        <img src="insights/view-4.jpg" alt="877,8 Tsd. Aufrufe auf TikTok" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; object-position: 50% 100%; border-radius: 8px; display: block;">
+        <img src="insights/view-3.jpg" alt="446 Tsd. Aufrufe" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; display: block;">
+        <img src="insights/view-1.jpg" alt="150 Tsd. Aufrufe" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; display: block;">
       </div>
     </div>
   </section>
@@ -182,9 +181,9 @@
     <div data-stackgrid="true" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr) minmax(0, 1fr); gap: 28px; align-items: start;">
 
       <div data-photocol="true" style="display: flex; flex-direction: column; gap: 20px; padding-left: 24px;">
-        <img src="fotos/wandern-aufstieg.jpg" data-portrait="true" alt="Nico beim Aufstieg" style="width: 82%; aspect-ratio: 3/4; object-fit: cover; border-radius: 8px; display: block;">
-        <img src="fotos/wurzel.jpg" data-portrait="true" alt="Nico an einer Baumwurzel" style="width: 212px; max-width: 100%; aspect-ratio: 3/4; margin-left: auto; object-fit: cover; border-radius: 8px; display: block;">
-        <img src="fotos/zelt-see.jpg" data-portrait="true" alt="Nico am Zelt am See" style="width: 300px; max-width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 8px; display: block;">
+        <img src="fotos/wandern-aufstieg.jpg" data-portrait="true" alt="Nico beim Aufstieg" loading="lazy" decoding="async" style="width: 82%; aspect-ratio: 3/4; object-fit: cover; border-radius: 8px; display: block;">
+        <img src="fotos/wurzel.jpg" data-portrait="true" alt="Nico an einer Baumwurzel" loading="lazy" decoding="async" style="width: 212px; max-width: 100%; aspect-ratio: 3/4; margin-left: auto; object-fit: cover; border-radius: 8px; display: block;">
+        <img src="fotos/zelt-see.jpg" data-portrait="true" alt="Nico am Zelt am See" loading="lazy" decoding="async" style="width: 300px; max-width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 8px; display: block;">
       </div>
 
       <div data-textcol="true" style="padding: 0 12px;">
@@ -207,9 +206,9 @@
       </div>
 
       <div data-photocol="true" style="display: flex; flex-direction: column; gap: 20px; padding-right: 24px;">
-        <img src="fotos/kiefernwald-koda.jpg" data-portrait="true" alt="Nico mit Koda im Kiefernwald" style="width: 68%; margin-top: 48px; margin-left: auto; aspect-ratio: 3/4; object-fit: cover; object-position: 50% 50%; border-radius: 8px; display: block;">
-        <img src="fotos/rucksack-huegel.jpg" alt="Nico mit Rucksack auf dem Hügel" style="width: 241px; max-width: 100%; height: 228px; object-fit: cover; border-radius: 8px; display: block;">
-        <img src="fotos/gipfel-stadt.jpg" alt="Nico mit Blick über die Stadt" style="width: 329px; max-width: 100%; height: 265px; margin-left: auto; object-fit: cover; border-radius: 8px; display: block;">
+        <img src="fotos/kiefernwald-koda.jpg" data-portrait="true" alt="Nico mit Koda im Kiefernwald" loading="lazy" decoding="async" style="width: 68%; margin-top: 48px; margin-left: auto; aspect-ratio: 3/4; object-fit: cover; object-position: 50% 50%; border-radius: 8px; display: block;">
+        <img src="fotos/rucksack-huegel.jpg" alt="Nico mit Rucksack auf dem Hügel" loading="lazy" decoding="async" style="width: 241px; max-width: 100%; height: 228px; object-fit: cover; border-radius: 8px; display: block;">
+        <img src="fotos/gipfel-stadt.jpg" alt="Nico mit Blick über die Stadt" loading="lazy" decoding="async" style="width: 329px; max-width: 100%; height: 265px; margin-left: auto; object-fit: cover; border-radius: 8px; display: block;">
       </div>
 
     </div>
@@ -219,8 +218,8 @@
     <div data-stackgrid="true" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr) minmax(0, 1fr); gap: 28px; align-items: start;">
 
       <div data-photocol="true" style="display: flex; flex-direction: column; gap: 18px; padding-left: 24px;">
-        <img src="fotos/bank-stadt.jpg" data-portrait="true" alt="Nico in der Stadt" style="width: 66%; aspect-ratio: 3/4; object-fit: cover; border-radius: 8px; display: block;">
-        <img src="fotos/shaker-freisteller.png" data-portrait="true" alt="Nico mit Shaker" style="width: 72%; margin-left: 5%; aspect-ratio: 3/4; object-fit: contain; display: block;">
+        <img src="fotos/bank-stadt.jpg" data-portrait="true" alt="Nico in der Stadt" loading="lazy" decoding="async" style="width: 66%; aspect-ratio: 3/4; object-fit: cover; border-radius: 8px; display: block;">
+        <img src="fotos/shaker-freisteller.png" data-portrait="true" alt="Nico mit Shaker" loading="lazy" decoding="async" style="width: 72%; margin-left: 5%; aspect-ratio: 3/4; object-fit: contain; display: block;">
       </div>
 
       <div data-textcol="true" style="padding: 0 12px;">
@@ -239,8 +238,8 @@
       </div>
 
       <div data-photocol="true" style="display: flex; flex-direction: column; gap: 18px; padding-right: 24px;">
-        <img src="fotos/koda-freisteller.png" data-portrait="true" alt="Nico und Koda" style="width: 74%; margin-left: auto; aspect-ratio: 3/4; object-fit: contain; display: block;">
-        <img src="uploads/IMG_20260913_150155.jpg" data-portrait="true" alt="Nico und Koda" style="width: 60%; aspect-ratio: 3/4; object-fit: cover; border-radius: 8px; display: block;">
+        <img src="fotos/koda-freisteller.png" data-portrait="true" alt="Nico und Koda" loading="lazy" decoding="async" style="width: 74%; margin-left: auto; aspect-ratio: 3/4; object-fit: contain; display: block;">
+        <img src="uploads/IMG_20260913_150155.jpg" data-portrait="true" alt="Nico und Koda" loading="lazy" decoding="async" style="width: 60%; aspect-ratio: 3/4; object-fit: cover; border-radius: 8px; display: block;">
       </div>
 
     </div>
