@@ -26,6 +26,9 @@
     [data-photocol] > * { flex: 1 1 42% !important; width: auto !important; max-width: 48% !important; height: 220px !important; margin: 0 !important; aspect-ratio: auto !important; object-fit: cover; }
     [data-photocol] > [data-portrait] { flex: 0 0 auto !important; width: 240px !important; max-width: 48% !important; height: auto !important; aspect-ratio: 3/4 !important; }
   }
+  @media (max-width: 900px) {
+    [data-videogrid] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  }
   @media (max-width: 640px) {
     [data-videogrid] { grid-template-columns: 1fr !important; max-width: 100% !important; margin: 0 !important; padding: 0 20px !important; box-sizing: border-box !important; gap: 30px !important; }
     [data-videogrid] > div { max-width: 70% !important; }
@@ -137,28 +140,94 @@
 
   <section id="portfolio" data-screen-label="Portfolio" style="background: #1a2013; padding: 96px 24px;">
     <div style="max-width: 1180px; margin: 0 auto;">
-      <h2 style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 96px); line-height: 0.95; text-transform: uppercase; text-align: center; margin: 0 0 14px;">UGC-Videos</h2>
-      <p style="text-align: center; max-width: 660px; margin: 0 auto 56px; font-size: 16px; color: #e8ddc0; text-wrap: pretty;">So könnte dein Produkt bei mir aussehen. Das hier sind eigene Beispielvideos zu drei Produkten.</p>
+      <h2 style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 96px); line-height: 0.95; text-transform: uppercase; text-align: center; margin: 0 0 14px;">Kundenprojekte</h2>
+      <p style="text-align: center; max-width: 660px; margin: 0 auto 56px; font-size: 16px; color: #e8ddc0; text-wrap: pretty;">Echte UGC-Videos für echte Marken — produziert, fertig geschnitten und bereit für Paid Ads oder organischen Einsatz.</p>
 
-      <div data-videogrid="true" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; max-width: 900px; margin: 0 auto; align-items: start;">
+      <div data-videogrid="true" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; max-width: 1100px; margin: 0 auto; align-items: start;">
 
         <div>
-          <p style="font-weight: 800; font-size: 16px; margin: 0 0 14px;">Laufschuh-Testimonial</p>
-          <video src="videos/beispiel-3.mp4" controls playsinline preload="metadata" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; background: #252c1b; display: block;"></video>
+          <p style="font-weight: 800; font-size: 16px; margin: 0 0 14px;">Hook — Produkt-Präsentation</p>
+          <video src="videos/Ich%20zeige%20dir.mp4" controls playsinline preload="metadata" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; background: #252c1b; display: block;"></video>
         </div>
 
         <div>
-          <p style="font-weight: 800; font-size: 16px; margin: 0 0 14px;">Produktüberzeugung für Supplement</p>
-          <video src="videos/beispiel-2.mp4" controls playsinline preload="metadata" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; background: #252c1b; display: block;"></video>
+          <p style="font-weight: 800; font-size: 16px; margin: 0 0 14px;">Hook — Emotional</p>
+          <video src="videos/Du%20f%C3%A4ngst%20nicht%20zum%20ersten%20Mal%20an.mp4" controls playsinline preload="metadata" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; background: #252c1b; display: block;"></video>
         </div>
 
         <div>
-          <p style="font-weight: 800; font-size: 16px; margin: 0 0 14px;">Problem-Solution Hundezubehör</p>
-          <video src="videos/0911(2).mp4" controls playsinline preload="metadata" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; background: #252c1b; display: block;"></video>
+          <p style="font-weight: 800; font-size: 16px; margin: 0 0 14px;">UGC-Testimonial</p>
+          <video src="videos/R%C3%BCckruf(1).mp4" controls playsinline preload="metadata" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; background: #252c1b; display: block;"></video>
+        </div>
+
+        <div>
+          <p style="font-weight: 800; font-size: 16px; margin: 0 0 14px;">Fitness &amp; Sport</p>
+          <video src="videos/Training(1).mp4" controls playsinline preload="metadata" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; background: #252c1b; display: block;"></video>
         </div>
 
       </div>
-      <p style="text-align: center; max-width: 700px; margin: 44px auto 0; font-size: 16px; color: rgba(232,221,192,0.85); text-wrap: pretty;">Das sind drei Produkte, keine Grenze. Ich arbeite genauso gern mit Marken aus anderen Nischen — sprich mich einfach an.</p>
+      <p style="text-align: center; max-width: 700px; margin: 44px auto 0; font-size: 16px; color: rgba(232,221,192,0.85); text-wrap: pretty;">Vier Projekte, verschiedene Nischen. Weitere Beispiele auf Anfrage — einfach melden.</p>
+    </div>
+  </section>
+
+  <section data-screen-label="Meine Kunden" style="background: #f4efe0; color: #1a2013; padding: 64px 24px;">
+    <div style="max-width: 1180px; margin: 0 auto; text-align: center;">
+      <p style="font-family: Anton, sans-serif; font-size: clamp(13px, 1.3vw, 16px); letter-spacing: 0.24em; text-transform: uppercase; margin: 0 0 48px; opacity: 0.45;">Brands, mit denen ich zusammengearbeitet habe</p>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 36px 64px;">
+        <img src="logos/lotto-scanner.png" alt="Lotto Scanner" loading="lazy" style="height: 44px; width: auto; max-width: 160px; object-fit: contain; mix-blend-mode: multiply;">
+        <img src="logos/dogs-love.png" alt="DOG'S LOVE" loading="lazy" style="height: 44px; width: auto; max-width: 160px; object-fit: contain; mix-blend-mode: multiply;">
+        <img src="logos/discpl.png" alt="DISCPL" loading="lazy" style="height: 44px; width: auto; max-width: 160px; object-fit: contain; mix-blend-mode: multiply;">
+        <img src="logos/douxo.png" alt="DOUXO" loading="lazy" style="height: 54px; width: auto; max-width: 220px; object-fit: contain; mix-blend-mode: multiply;">
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Feedbacks" style="background: #252c1b; color: #f4efe0; padding: 96px 24px; border-top: 1px solid rgba(244,239,224,0.1);">
+    <div style="max-width: 1100px; margin: 0 auto;">
+      <h2 style="font-family: Anton, sans-serif; font-size: clamp(36px, 5vw, 72px); line-height: 0.95; text-transform: uppercase; text-align: center; margin: 0 0 56px;">Was meine Kunden sagen</h2>
+      <div style="columns: 3 260px; column-gap: 22px; orphans: 1; widows: 1;">
+
+        <div style="break-inside: avoid; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px; margin-bottom: 22px;">
+          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #e8ddc0;">„ich wünschte auch, dass alle Creator:innen so sauber und schnell den Content anliefern wie du :D Auch uns hat die Zusammenarbeit sehr viel Spaß gemacht und danke nochmal, dass du so kurzfristig die Zeit dafür gefunden hast."</p>
+        </div>
+
+        <div style="break-inside: avoid; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px; margin-bottom: 22px;">
+          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #e8ddc0;">„Die Videos sind wirklich perfekt, ich finde du hast das echt klasse umgesetzt, die ganzen Szenenwechsel und auch dein Storytelling ist eine richtig tolle, runde Sache!"</p>
+        </div>
+
+        <div style="break-inside: avoid; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px; margin-bottom: 22px;">
+          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #e8ddc0;">„Die Videos sind PERFEKT! Toll umgesetzt, mit den ganzen unterschiedlichen Locations und auch der Text passt super. Vielen Dank für deine super Arbeit ;)"</p>
+        </div>
+
+        <div style="break-inside: avoid; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px; margin-bottom: 22px;">
+          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #e8ddc0;">„vielen Dank für den Content! Ich hab mir deinen Content durchgeschaut und das hat auf jeden Fall gepasst mit den zwei Settings! Auch sonst war der Content sehr gut gelungen 👍"</p>
+        </div>
+
+        <div style="break-inside: avoid; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px; margin-bottom: 22px;">
+          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #e8ddc0;">„Vielen Dank für deinen Content. Er gefällt mir super gut und du hast das Konzept sehr gut umgesetzt. Ich mag auch dein Outfit im Video, das passt super zusammen und auch das Setting ist super schön."</p>
+        </div>
+
+        <div style="break-inside: avoid; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px; margin-bottom: 22px;">
+          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #e8ddc0;">„Dein Video ist auf jeden Fall super geworden und ich bin sehr happy damit. Ich finde auch du hast das toll umgesetzt die Produkte zu zeigen ohne jetzt zu viel zu zeigen. Bin sehr gespannt auf die Performance und bedanke mich ebenfalls für die unkomplizierte und gute Zusammenarbeit. 😁"</p>
+        </div>
+
+        <div style="break-inside: avoid; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px; margin-bottom: 22px;">
+          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #e8ddc0;">„super cool, dass du schon vor gearbeitet hattest, vielen Dank nochmal! Die Videos sind klasse geworden. Vielen Dank auch für die tolle Umsetzung. 😊 Da sind wir alle sehr happy mit."</p>
+        </div>
+
+        <div style="break-inside: avoid; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px; margin-bottom: 22px;">
+          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #e8ddc0;">„Hey Nico, vielen Dank für die schnelle Lieferung. Die beiden Videos sind super. Gruß Philipp"</p>
+        </div>
+
+        <div style="break-inside: avoid; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px; margin-bottom: 22px;">
+          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #e8ddc0;">„Danke Nico und Koda, das habt ihr wirklich super gemacht! Wir sind sehr happy mit den Videos :)"</p>
+        </div>
+
+        <div style="break-inside: avoid; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px; margin-bottom: 22px;">
+          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #e8ddc0;">„Hi Nico, die Videos sind perfekt geworden. Danke dafür 🙏"</p>
+        </div>
+
+      </div>
     </div>
   </section>
 
