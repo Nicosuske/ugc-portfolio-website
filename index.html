@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="fotos/hero-see.jpg">
+<link rel="preload" as="image" href="fotos/hero-nico.jpg">
 <style>
   body { margin: 0; background: #1a2013; -webkit-font-smoothing: antialiased; }
   html { scroll-behavior: smooth; }
@@ -16,19 +16,31 @@
   a:hover { color: #aec48a; }
   img { filter: contrast(1.1) saturate(1.14) brightness(1.03); }
   @keyframes marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-25%,0,0); } }
-  @media (max-width: 1000px) {
-    [data-videogrid] { gap: 14px !important; }
+
+  /* Hero */
+  [data-hero-grid] { display: grid; grid-template-columns: 55fr 45fr; min-height: 78vh; max-width: 1320px; margin: 0 auto; }
+  [data-hero-photo-col] { overflow: hidden; display: flex; flex-direction: column; padding: clamp(48px, 8vh, 88px) 0; }
+  @media (max-width: 700px) {
+    [data-hero-grid] { grid-template-columns: 1fr !important; }
+    [data-hero-text-col] { padding: 52px 24px 44px !important; text-align: center !important; }
+    [data-hero-photo-col] { min-height: 62vw !important; max-height: 75vw !important; padding: 0 !important; }
   }
+
+  /* Responsive grid / photo layouts */
+  @media (max-width: 1000px) { [data-videogrid] { gap: 14px !important; } }
   @media (max-width: 1100px) {
     [data-stackgrid] { grid-template-columns: 1fr !important; padding: 0 20px; }
     [data-textcol] { order: -1; }
     [data-photocol] { flex-direction: row !important; flex-wrap: wrap; padding: 0 !important; justify-content: center !important; }
     [data-photocol] > * { flex: 1 1 42% !important; width: auto !important; max-width: 48% !important; height: 220px !important; margin: 0 !important; aspect-ratio: auto !important; object-fit: cover; }
     [data-photocol] > [data-portrait] { flex: 0 0 auto !important; width: 240px !important; max-width: 48% !important; height: auto !important; aspect-ratio: 3/4 !important; }
+    [data-leistungen-text] { text-align: center !important; }
+    [data-leistungen-text] ul { padding-left: 0 !important; list-style: none !important; }
+    [data-leistungen-text] h3 { text-align: center !important; }
+    [data-leistungen-text] p { text-align: center !important; }
+    [data-leistungen-text] a { display: block !important; }
   }
-  @media (max-width: 900px) {
-    [data-videogrid] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-  }
+  @media (max-width: 900px) { [data-videogrid] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
   @media (max-width: 640px) {
     [data-videogrid] { grid-template-columns: 1fr !important; max-width: 100% !important; margin: 0 !important; padding: 0 20px !important; box-sizing: border-box !important; gap: 30px !important; }
     [data-videogrid] > div { max-width: 70% !important; }
@@ -36,33 +48,30 @@
     [data-videogrid] > div:nth-child(even) { margin-left: auto; margin-right: 0; }
     [data-marquee-bar] { font-size: 22px !important; }
   }
-  @media (max-width: 860px) {
-    [data-section-pad] { padding-top: 64px !important; padding-bottom: 64px !important; }
-    [data-hero] { height: 70vh !important; min-height: 520px !important; }
-  }
-  /* Hero: Text links auf Desktop – Padding muss > 12.24% (linker Bildrand bei scale 0.82) sein */
-  [data-hero-inner] { align-items: flex-start !important; padding-left: clamp(80px, 15vw, 250px) !important; }
-  [data-hero-inner] h1 { text-align: left !important; }
-  [data-hero-inner] [data-hero-text] { text-align: left !important; max-width: 500px !important; }
-  /* Hero: Mobile zentriert + Bildposition angepasst */
-  @media (max-width: 700px) {
-    [data-hero-inner] { align-items: center !important; padding-left: 20px !important; padding-right: 20px !important; }
-    [data-hero-inner] h1 { text-align: center !important; }
-    [data-hero-inner] [data-hero-text] { text-align: center !important; max-width: 100% !important; }
-    [data-hero-img] { object-position: 55% 38% !important; transform: scale(1) !important; }
-    [data-hero-blur-img] { object-position: 55% 38% !important; }
-  }
-  /* Mehr über mich: zentriert auf Mobile */
+  @media (max-width: 860px) { [data-section-pad] { padding-top: 64px !important; padding-bottom: 64px !important; } }
+
+  /* Über mich mobile */
   @media (max-width: 1100px) {
     #ueber-mich ul { text-align: center !important; }
     #ueber-mich [data-photocol] { justify-content: center !important; }
   }
-  /* Mehr über mich: horizontale Scroll-Leiste auf kleinen Screens */
   @media (max-width: 640px) {
     #ueber-mich [data-photocol] { flex-wrap: nowrap !important; overflow-x: auto !important; padding: 0 16px 16px !important; gap: 12px !important; -webkit-overflow-scrolling: touch !important; scrollbar-width: none !important; }
     #ueber-mich [data-photocol]::-webkit-scrollbar { display: none; }
     #ueber-mich [data-photocol] > img { flex: 0 0 auto !important; width: 145px !important; max-width: 145px !important; height: 194px !important; margin: 0 !important; object-fit: cover !important; border-radius: 8px !important; }
   }
+
+  /* Scroll-Animationen */
+  .js [data-animate] {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.72s cubic-bezier(0.16,1,0.3,1), transform 0.72s cubic-bezier(0.16,1,0.3,1);
+  }
+  .js [data-animate].in-view { opacity: 1; transform: none; }
+  .js [data-animate][data-d="1"] { transition-delay: 0.10s; }
+  .js [data-animate][data-d="2"] { transition-delay: 0.20s; }
+  .js [data-animate][data-d="3"] { transition-delay: 0.32s; }
+  .js [data-animate][data-d="4"] { transition-delay: 0.44s; }
 </style>
 </head>
 <body>
@@ -82,52 +91,57 @@
     </div>
   </header>
 
-  <section id="top" data-screen-label="Hero" style="position: relative;">
-    <div data-hero-inner="true" style="height: 82vh; min-height: 600px; background: #252c1b; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; padding-top: 6vh;">
-      <h1 style="position: relative; z-index: 3; font-family: Anton, sans-serif; font-size: clamp(52px, 10.5vw, 180px); line-height: 0.86; margin: 0; text-transform: uppercase; color: #f4efe0; text-align: left; width: 100%; padding: 0; box-sizing: border-box; text-shadow: 4px 4px 0 rgba(26,32,19,0.65), 8px 8px 0 rgba(26,32,19,0.35), 10px 10px 24px rgba(0,0,0,0.55);">Nico Suske</h1><div data-hero-text="true" style="position: relative; z-index: 3; text-align: left; padding: 20px 0 0;">
-        <p style="font-size: clamp(16px, 1.5vw, 22px); font-weight: 800; margin: 0 0 4px; color: #f4efe0;">26 Jahre · UGC-Creator · Mecklenburgische Seenplatte</p>
-        <p style="font-size: clamp(16px, 1.5vw, 22px); font-weight: 800; margin: 0 0 26px; color: #f4efe0; text-wrap: pretty;">Content, der verkauft, ohne wie Werbung zu klingen</p>
-        <a href="#kontakt" style="display: inline-block; background: #f4efe0; color: #1a2013; font-weight: 700; font-size: 15px; letter-spacing: 0.18em; text-transform: uppercase; padding: 20px 58px; border-radius: 999px;">Kontakt aufnehmen</a>
+  <!-- HERO -->
+  <section id="top" data-screen-label="Hero" style="background: #252c1b;">
+    <div data-hero-grid>
+      <div data-hero-text-col style="background: #252c1b; display: flex; flex-direction: column; justify-content: center; padding: clamp(48px, 8vh, 88px) clamp(32px, 7vw, 96px);">
+        <p data-animate style="font-family: Anton, sans-serif; font-size: 13px; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(244,239,224,0.45); margin: 0 0 20px;">UGC Creator · Portfolio</p>
+        <h1 data-animate data-d="1" style="font-family: Anton, sans-serif; font-size: clamp(54px, 7.5vw, 118px); line-height: 0.9; text-transform: uppercase; margin: 0 0 26px; color: #f4efe0;">Nico<br>Suske</h1>
+        <p data-animate data-d="2" style="font-size: clamp(13px, 1.2vw, 16px); font-weight: 600; color: rgba(244,239,224,0.6); margin: 0 0 30px;">📍 26 Jahre · Mecklenburgische Seenplatte</p>
+        <p data-animate data-d="3" style="font-size: clamp(16px, 1.45vw, 20px); font-weight: 800; color: #f4efe0; margin: 0 0 40px; max-width: 420px; line-height: 1.4;">Content, der verkauft, ohne wie Werbung zu klingen</p>
+        <div data-animate data-d="4">
+          <a href="#kontakt" style="display: inline-block; background: #f4efe0; color: #1a2013; font-weight: 700; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; padding: 18px 44px; border-radius: 999px;">Kontakt aufnehmen</a>
+        </div>
       </div>
-      <div style="position: absolute; inset: 0; z-index: 0; overflow: hidden; background-image: url('fotos/hero-see.jpg'); background-size: cover; background-position: 68% 38%; filter: blur(22px); transform: scale(1.05);"></div>
-      <img data-hero-img="true" src="fotos/hero-see.jpg" alt="Nico am See" fetchpriority="high" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 68% 38%; transform: scale(0.82); transform-origin: 68% 50%; z-index: 1;">
-      <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(26,32,19,0.3) 0%, rgba(26,32,19,0.22) 40%, rgba(26,32,19,0.72) 100%); z-index: 2;"></div>
+      <div data-hero-photo-col>
+        <img src="fotos/hero-nico.jpg" alt="Nico am See" fetchpriority="high" decoding="async" style="width: 100%; flex: 1; min-height: 0; object-fit: cover; object-position: 55% 18%; display: block; filter: contrast(1.1) saturate(1.1) brightness(1.04);">
+      </div>
     </div>
   </section>
 
+  <!-- LEISTUNGEN -->
   <section id="leistungen" data-screen-label="Lass uns reden" style="background: #f4efe0; color: #1a2013; padding: 96px 24px;">
     <div data-stackgrid="true" style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: 56px; align-items: start;">
-      <div>
-        <h2 style="font-family: Anton, sans-serif; font-size: clamp(34px, 3.6vw, 54px); line-height: 1.0; text-transform: uppercase; margin: 0 0 16px;">Lass uns zusammenarbeiten</h2>
+      <div data-leistungen-text>
+        <h2 data-animate style="font-family: Anton, sans-serif; font-size: clamp(34px, 3.6vw, 54px); line-height: 1.0; text-transform: uppercase; margin: 0 0 16px;">Lass uns zusammenarbeiten</h2>
         <p style="font-weight: 700; font-size: 17px; margin: 0 0 26px;">📍 Neubrandenburg, Mecklenburg-Vorpommern</p>
         <div style="display: flex; flex-direction: column; gap: 26px;">
-        <div>
-          <h3 style="font-size: 17px; font-weight: 800; margin: 0 0 12px;">Themen, die zu mir passen</h3>
-          <ul style="list-style: disc; margin: 0; padding: 0 0 0 22px; display: flex; flex-direction: column; gap: 8px; font-size: 16.5px; line-height: 1.4;">
-            <li>🥾 Outdoor-Ausrüstung</li>
-            <li>👟 Lauf- &amp; Sportbekleidung</li>
-            <li>🥤 Supplements</li>
-            <li>🐕 Hundefutter</li>
-            <li>🦴 Hundezubehör</li>
-            <li>➕ Offen für andere Nischen — frag einfach</li>
-          </ul>
-        </div>
-        <div>
-          <h3 style="font-size: 17px; font-weight: 800; margin: 0 0 12px;">Was du wissen solltest</h3>
-          <ul style="list-style: disc; margin: 0; padding: 0 0 0 22px; display: flex; flex-direction: column; gap: 8px; font-size: 16.5px; line-height: 1.4;">
-            <li>Selbstständiger Online-Marketer im Hauptberuf</li>
-            <li>Ich verwalte selbst Ads - Hooks &amp; Zielgruppenanalyse sind Alltag</li>
-            <li>26 Jahre alt, vorher Bundespolizei und Bundeswehr</li>
-            <li>Koda, mein Straßenhund von Kos, ist mit dabei</li>
-            <li>Immer draußen: Wald, See, Calisthenics-Park — bei jedem Wetter</li>
-          </ul>
-        </div>
+          <div data-animate data-d="1">
+            <h3 style="font-size: 17px; font-weight: 800; margin: 0 0 12px;">Themen, die zu mir passen</h3>
+            <ul style="list-style: disc; margin: 0; padding: 0 0 0 22px; display: flex; flex-direction: column; gap: 8px; font-size: 16.5px; line-height: 1.4;">
+              <li>🥾 Outdoor-Ausrüstung</li>
+              <li>👟 Lauf- &amp; Sportbekleidung</li>
+              <li>🥤 Supplements</li>
+              <li>🐕 Hundebedarf</li>
+              <li>➕ Und sicherlich auch deine Nische</li>
+            </ul>
+          </div>
+          <div data-animate data-d="2">
+            <h3 style="font-size: 17px; font-weight: 800; margin: 0 0 12px;">Was du wissen solltest</h3>
+            <ul style="list-style: disc; margin: 0; padding: 0 0 0 22px; display: flex; flex-direction: column; gap: 8px; font-size: 16.5px; line-height: 1.4;">
+              <li>Selbstständiger Online-Marketer</li>
+              <li>Ich verwalte selbst Ads</li>
+              <li>26 Jahre alt, vorher Bundespolizei und Bundeswehr</li>
+              <li>Koda, mein Straßenhund von Kos, ist mit dabei</li>
+              <li>Wald, See, Calisthenics-Park. Immer aktiv, egal was das Wetter macht</li>
+            </ul>
+          </div>
         </div>
         <p style="font-size: 17px; font-weight: 800; margin: 26px 0 64px;">Echter Typ, nicht aufgesetzt, gewissenhaft.</p>
         <a href="#kontakt" style="display: block; text-align: center; background: #1a2013; color: #f4efe0; font-weight: 700; font-size: 15px; letter-spacing: 0.18em; text-transform: uppercase; padding: 22px 34px; border-radius: 999px;">Kontakt aufnehmen</a>
       </div>
 
-      <div style="display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr); gap: 18px; align-items: start;">
+      <div data-animate data-d="1" style="display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr); gap: 18px; align-items: start;">
         <video src="videos/0922(2).mp4" controls playsinline preload="metadata" style="width: 100%; max-width: 300px; margin: 0 auto; aspect-ratio: 9/16; object-fit: cover; border-radius: 10px; background: #e8ddc0; display: block;"></video>
         <div style="display: flex; flex-direction: column; gap: 18px;">
           <img src="fotos/wald-koda.jpg" alt="Nico mit Koda im Wald" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 8px; display: block;">
@@ -138,106 +152,74 @@
     </div>
   </section>
 
+  <!-- PORTFOLIO -->
   <section id="portfolio" data-screen-label="Portfolio" style="background: #1a2013; padding: 96px 24px;">
     <div style="max-width: 1180px; margin: 0 auto;">
-      <h2 style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 96px); line-height: 0.95; text-transform: uppercase; text-align: center; margin: 0 0 14px;">Kundenprojekte</h2>
-      <p style="text-align: center; max-width: 660px; margin: 0 auto 56px; font-size: 16px; color: #e8ddc0; text-wrap: pretty;">Echte UGC-Videos für echte Marken — produziert, fertig geschnitten und bereit für Paid Ads oder organischen Einsatz.</p>
+      <h2 data-animate style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 96px); line-height: 0.95; text-transform: uppercase; text-align: center; margin: 0 0 56px;">Kundenprojekte</h2>
 
-      <div data-videogrid="true" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; max-width: 1100px; margin: 0 auto; align-items: start;">
-
+      <div data-videogrid="true" data-animate data-d="1" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; max-width: 1100px; margin: 0 auto; align-items: start;">
         <div>
-          <p style="font-weight: 800; font-size: 16px; margin: 0 0 14px;">Hook — Produkt-Präsentation</p>
+          <p style="font-weight: 800; font-size: 16px; margin: 0 0 14px;">Ehrlicher Tipp</p>
           <video src="videos/Ich%20zeige%20dir.mp4" controls playsinline preload="metadata" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; background: #252c1b; display: block;"></video>
         </div>
-
         <div>
-          <p style="font-weight: 800; font-size: 16px; margin: 0 0 14px;">Hook — Emotional</p>
+          <p style="font-weight: 800; font-size: 16px; margin: 0 0 14px;">Emotionales Storytelling</p>
           <video src="videos/Du%20f%C3%A4ngst%20nicht%20zum%20ersten%20Mal%20an.mp4" controls playsinline preload="metadata" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; background: #252c1b; display: block;"></video>
         </div>
-
         <div>
-          <p style="font-weight: 800; font-size: 16px; margin: 0 0 14px;">UGC-Testimonial</p>
+          <p style="font-weight: 800; font-size: 16px; margin: 0 0 14px;">Problemlösung</p>
           <video src="videos/R%C3%BCckruf(1).mp4" controls playsinline preload="metadata" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; background: #252c1b; display: block;"></video>
         </div>
-
         <div>
-          <p style="font-weight: 800; font-size: 16px; margin: 0 0 14px;">Fitness &amp; Sport</p>
+          <p style="font-weight: 800; font-size: 16px; margin: 0 0 14px;">Ehrliche Empfehlung</p>
           <video src="videos/Training(1).mp4" controls playsinline preload="metadata" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; background: #252c1b; display: block;"></video>
         </div>
-
       </div>
-      <p style="text-align: center; max-width: 700px; margin: 44px auto 0; font-size: 16px; color: rgba(232,221,192,0.85); text-wrap: pretty;">Vier Projekte, verschiedene Nischen. Weitere Beispiele auf Anfrage — einfach melden.</p>
     </div>
   </section>
 
-  <section data-screen-label="Meine Kunden" style="background: #f4efe0; color: #1a2013; padding: 64px 24px;">
+  <!-- MEINE PARTNER -->
+  <section data-screen-label="Meine Partner" style="background: #f4efe0; color: #1a2013; padding: 64px 24px;">
     <div style="max-width: 1180px; margin: 0 auto; text-align: center;">
-      <p style="font-family: Anton, sans-serif; font-size: clamp(13px, 1.3vw, 16px); letter-spacing: 0.24em; text-transform: uppercase; margin: 0 0 48px; opacity: 0.45;">Brands, mit denen ich zusammengearbeitet habe</p>
-      <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 36px 64px;">
-        <img src="logos/lotto-scanner.png" alt="Lotto Scanner" loading="lazy" style="height: 44px; width: auto; max-width: 160px; object-fit: contain; mix-blend-mode: multiply;">
-        <img src="logos/dogs-love.png" alt="DOG'S LOVE" loading="lazy" style="height: 44px; width: auto; max-width: 160px; object-fit: contain; mix-blend-mode: multiply;">
-        <img src="logos/discpl.png" alt="DISCPL" loading="lazy" style="height: 44px; width: auto; max-width: 160px; object-fit: contain; mix-blend-mode: multiply;">
-        <img src="logos/douxo.png" alt="DOUXO" loading="lazy" style="height: 54px; width: auto; max-width: 220px; object-fit: contain; mix-blend-mode: multiply;">
+      <h2 data-animate style="font-family: Anton, sans-serif; font-size: clamp(36px, 5vw, 72px); line-height: 0.95; text-transform: uppercase; margin: 0 0 48px;">Meine Partner</h2>
+      <div data-animate data-d="1" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px 72px;">
+        <img src="logos/lotto-scanner.png" alt="Lotto Scanner" loading="lazy" style="height: 44px; width: auto; max-width: 180px; object-fit: contain; mix-blend-mode: multiply; filter: contrast(1) saturate(1) brightness(1);">
+        <img src="logos/dogs-love.png" alt="DOG'S LOVE" loading="lazy" style="height: 44px; width: auto; max-width: 180px; object-fit: contain; mix-blend-mode: multiply; filter: contrast(1) saturate(1) brightness(1);">
+        <img src="logos/discpl.png" alt="DISCPL" loading="lazy" style="height: 44px; width: auto; max-width: 180px; object-fit: contain; mix-blend-mode: multiply; filter: contrast(1) saturate(1) brightness(1);">
+        <img src="logos/douxo.png" alt="DOUXO" loading="lazy" style="height: 44px; width: auto; max-width: 180px; object-fit: contain; mix-blend-mode: multiply; filter: contrast(1) saturate(1) brightness(1);">
+        <img src="logos/azubiyo-logo.jpg" alt="Azubiyo" loading="lazy" style="height: 68px; width: auto; max-width: 240px; object-fit: contain; mix-blend-mode: multiply; filter: contrast(1) saturate(1) brightness(1);">
+        <img src="logos/josera-logo.jpg" alt="Josera" loading="lazy" style="height: 68px; width: auto; max-width: 240px; object-fit: contain; mix-blend-mode: multiply; filter: contrast(1) saturate(1) brightness(1);">
       </div>
     </div>
   </section>
 
-  <section data-screen-label="Feedbacks" style="background: #252c1b; color: #f4efe0; padding: 96px 24px; border-top: 1px solid rgba(244,239,224,0.1);">
+  <!-- FEEDBACK -->
+  <section data-screen-label="Feedback" style="background: #252c1b; color: #f4efe0; padding: 96px 24px; border-top: 1px solid rgba(244,239,224,0.1);">
     <div style="max-width: 1100px; margin: 0 auto;">
-      <h2 style="font-family: Anton, sans-serif; font-size: clamp(36px, 5vw, 72px); line-height: 0.95; text-transform: uppercase; text-align: center; margin: 0 0 56px;">Was meine Kunden sagen</h2>
-      <div style="columns: 3 260px; column-gap: 22px; orphans: 1; widows: 1;">
-
-        <div style="break-inside: avoid; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px; margin-bottom: 22px;">
-          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #e8ddc0;">„ich wünschte auch, dass alle Creator:innen so sauber und schnell den Content anliefern wie du :D Auch uns hat die Zusammenarbeit sehr viel Spaß gemacht und danke nochmal, dass du so kurzfristig die Zeit dafür gefunden hast."</p>
-        </div>
-
-        <div style="break-inside: avoid; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px; margin-bottom: 22px;">
-          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #e8ddc0;">„Die Videos sind wirklich perfekt, ich finde du hast das echt klasse umgesetzt, die ganzen Szenenwechsel und auch dein Storytelling ist eine richtig tolle, runde Sache!"</p>
-        </div>
-
-        <div style="break-inside: avoid; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px; margin-bottom: 22px;">
-          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #e8ddc0;">„Die Videos sind PERFEKT! Toll umgesetzt, mit den ganzen unterschiedlichen Locations und auch der Text passt super. Vielen Dank für deine super Arbeit ;)"</p>
-        </div>
-
-        <div style="break-inside: avoid; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px; margin-bottom: 22px;">
-          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #e8ddc0;">„vielen Dank für den Content! Ich hab mir deinen Content durchgeschaut und das hat auf jeden Fall gepasst mit den zwei Settings! Auch sonst war der Content sehr gut gelungen 👍"</p>
-        </div>
-
-        <div style="break-inside: avoid; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px; margin-bottom: 22px;">
-          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #e8ddc0;">„Vielen Dank für deinen Content. Er gefällt mir super gut und du hast das Konzept sehr gut umgesetzt. Ich mag auch dein Outfit im Video, das passt super zusammen und auch das Setting ist super schön."</p>
-        </div>
-
-        <div style="break-inside: avoid; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px; margin-bottom: 22px;">
-          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #e8ddc0;">„Dein Video ist auf jeden Fall super geworden und ich bin sehr happy damit. Ich finde auch du hast das toll umgesetzt die Produkte zu zeigen ohne jetzt zu viel zu zeigen. Bin sehr gespannt auf die Performance und bedanke mich ebenfalls für die unkomplizierte und gute Zusammenarbeit. 😁"</p>
-        </div>
-
-        <div style="break-inside: avoid; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px; margin-bottom: 22px;">
-          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #e8ddc0;">„super cool, dass du schon vor gearbeitet hattest, vielen Dank nochmal! Die Videos sind klasse geworden. Vielen Dank auch für die tolle Umsetzung. 😊 Da sind wir alle sehr happy mit."</p>
-        </div>
-
-        <div style="break-inside: avoid; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px; margin-bottom: 22px;">
+      <h2 data-animate style="font-family: Anton, sans-serif; font-size: clamp(36px, 5vw, 72px); line-height: 0.95; text-transform: uppercase; text-align: center; margin: 0 0 56px;">Feedback</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 22px; justify-content: center;">
+        <div data-animate style="flex: 1 1 280px; max-width: 360px; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px;">
           <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #e8ddc0;">„Hey Nico, vielen Dank für die schnelle Lieferung. Die beiden Videos sind super. Gruß Philipp"</p>
         </div>
-
-        <div style="break-inside: avoid; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px; margin-bottom: 22px;">
+        <div data-animate data-d="1" style="flex: 1 1 280px; max-width: 360px; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px;">
           <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #e8ddc0;">„Danke Nico und Koda, das habt ihr wirklich super gemacht! Wir sind sehr happy mit den Videos :)"</p>
         </div>
-
-        <div style="break-inside: avoid; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px; margin-bottom: 22px;">
+        <div data-animate data-d="2" style="flex: 1 1 280px; max-width: 360px; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px;">
           <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #e8ddc0;">„Hi Nico, die Videos sind perfekt geworden. Danke dafür 🙏"</p>
         </div>
-
+        <div data-animate data-d="3" style="flex: 1 1 280px; max-width: 360px; background: rgba(244,239,224,0.08); border: 1px solid rgba(244,239,224,0.16); border-radius: 12px; padding: 24px 26px;">
+          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #e8ddc0;">„Danke dir auch für die Extra-Hooks. Die haben uns sehr gefallen."</p>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- ORGANISCHE VIEWS -->
   <section data-screen-label="Organische Views" style="background: #252c1b; padding: 96px 24px; border-top: 1px solid rgba(244,239,224,0.12);">
     <div style="max-width: 1180px; margin: 0 auto;">
-      <p style="max-width: 780px; margin: 0 auto 44px; font-size: 17px; line-height: 1.65; color: #e8ddc0; text-align: center; text-wrap: pretty;">Auf <strong>@kodafromgreece</strong> — meinem Account über Koda, meinen Straßenhund aus Griechenland — stehe ich hin und wieder selbst vor der Kamera. 3,45 % Engagement, 24.000+ Follower auf Instagram &amp; TikTok zusammen, alles organisch. Heißt: Mein Gesicht, meine Stimme und meine Art zu sprechen halten Leute vor dem Video 😎</p>
-
-      <h3 style="font-family: Anton, sans-serif; font-size: clamp(28px, 3vw, 44px); text-transform: uppercase; margin: 0 0 32px; text-align: center;">Organische Views 🤯</h3>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 18px; max-width: 900px; margin: 0 auto;">
+      <p data-animate style="max-width: 780px; margin: 0 auto 44px; font-size: 17px; line-height: 1.65; color: #e8ddc0; text-align: center; text-wrap: pretty;">Auf <strong>@kodafromgreece</strong> — meinem Account über Koda, meinen Straßenhund aus Griechenland — stehe ich hin und wieder selbst vor der Kamera. 3,45 % Engagement, 24.000+ Follower auf Instagram &amp; TikTok zusammen, alles organisch. Heißt: Mein Gesicht, meine Stimme und meine Art zu sprechen halten Leute vor dem Video 😎</p>
+      <h3 data-animate data-d="1" style="font-family: Anton, sans-serif; font-size: clamp(28px, 3vw, 44px); text-transform: uppercase; margin: 0 0 32px; text-align: center;">Organische Views 🤯</h3>
+      <div data-animate data-d="2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 18px; max-width: 900px; margin: 0 auto;">
         <img src="insights/view-2.jpg" alt="595 Tsd. Aufrufe" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; display: block;">
         <img src="insights/view-4.jpg" alt="877,8 Tsd. Aufrufe auf TikTok" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; object-position: 50% 100%; border-radius: 8px; display: block;">
         <img src="insights/view-3.jpg" alt="446 Tsd. Aufrufe" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; display: block;">
@@ -246,35 +228,36 @@
     </div>
   </section>
 
+  <!-- WARUM ICH -->
   <section id="warum" data-screen-label="Warum ich" style="background: #f4efe0; color: #1a2013; padding: 96px 0;">
     <div data-stackgrid="true" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr) minmax(0, 1fr); gap: 28px; align-items: start;">
 
-      <div data-photocol="true" style="display: flex; flex-direction: column; gap: 20px; padding-left: 24px;">
+      <div data-animate data-photocol="true" style="display: flex; flex-direction: column; gap: 20px; padding-left: 24px;">
         <img src="fotos/wandern-aufstieg.jpg" data-portrait="true" alt="Nico beim Aufstieg" loading="lazy" decoding="async" style="width: 82%; aspect-ratio: 3/4; object-fit: cover; border-radius: 8px; display: block;">
         <img src="fotos/wurzel.jpg" data-portrait="true" alt="Nico an einer Baumwurzel" loading="lazy" decoding="async" style="width: 212px; max-width: 100%; aspect-ratio: 3/4; margin-left: auto; object-fit: cover; border-radius: 8px; display: block;">
         <img src="fotos/zelt-see.jpg" data-portrait="true" alt="Nico am Zelt am See" loading="lazy" decoding="async" style="width: 300px; max-width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 8px; display: block;">
       </div>
 
       <div data-textcol="true" style="padding: 0 12px;">
-        <h2 style="font-family: Anton, sans-serif; font-size: clamp(44px, 6vw, 92px); line-height: 0.95; text-transform: uppercase; text-align: center; margin: 0 0 40px;">Warum ich?</h2>
+        <h2 data-animate style="font-family: Anton, sans-serif; font-size: clamp(44px, 6vw, 92px); line-height: 0.95; text-transform: uppercase; text-align: center; margin: 0 0 40px;">Warum ich?</h2>
         <div style="display: flex; flex-direction: column; gap: 28px; font-size: 18px; line-height: 1.6; text-align: center;">
-          <p style="margin: 0; text-wrap: pretty;">Ich bin selbstständiger Online-Marketer. Ich erstelle Ads, verwalte sie und werte sie aus. Ich weiß deshalb, was in ein Video gehört, was performt und wie eine Zielgruppe tickt.</p>
+          <p data-animate style="margin: 0; text-wrap: pretty;">Ich bin selbstständiger Online-Marketer. Ich erstelle Ads, verwalte sie und werte sie aus. Ich weiß deshalb, was in ein Video gehört, was performt und wie eine Zielgruppe tickt.</p>
           <hr style="border: 0; border-top: 1px solid rgba(26,32,19,0.25); margin: 0; width: 60%; align-self: center;">
-          <p style="margin: 0; text-wrap: pretty;">Vor dem Marketing war ich Bundespolizist, davor bei der Bundeswehr. Struktur, Verlässlichkeit und Deadlines sind für mich kein Thema.</p>
+          <p data-animate style="margin: 0; text-wrap: pretty;">Vor dem Marketing war ich Bundespolizist, davor bei der Bundeswehr. Struktur, Verlässlichkeit und Deadlines sind für mich kein Thema.</p>
           <hr style="border: 0; border-top: 1px solid rgba(26,32,19,0.25); margin: 0; width: 60%; align-self: center;">
-          <p style="margin: 0; text-wrap: pretty;">Männliche deutsche UGC-Creator sind in der Minderheit. Viele Männer fühlen sich von Werbung mit weiblichen Darstellerin nicht angesprochen, obwohl der Product-Market-Fit gegeben ist. Die Lücke möchte ich füllen.</p>
-          <p style="margin: 0; text-wrap: pretty;">Ich rede mit dem Zuschauer wie mit einem Kumpel, dem ich ein Produkt empfehle, weil ich es selbst benutze. Ruhig, ehrlich, ohne Ausrufezeichen-Stimme.</p>
+          <p data-animate style="margin: 0; text-wrap: pretty;">Männliche deutsche UGC-Creator sind in der Minderheit. Viele Männer fühlen sich von Werbung mit weiblichen Darstellerinnen nicht angesprochen, obwohl der Product-Market-Fit gegeben ist. Die Lücke möchte ich füllen.</p>
+          <p data-animate style="margin: 0; text-wrap: pretty;">Ich rede mit dem Zuschauer wie mit einem Kumpel, dem ich ein Produkt empfehle, weil ich es selbst benutze. Ruhig, ehrlich, ohne Ausrufezeichen-Stimme.</p>
           <hr style="border: 0; border-top: 1px solid rgba(26,32,19,0.25); margin: 0; width: 60%; align-self: center;">
-          <p style="margin: 0; text-wrap: pretty;">Nischen, die ich sowieso jeden Tag bediene: Outdoor, Sport und ein Straßenhund von Kos. Wald, See, Laufstrecke und Calisthenics-Park statt Sofa und Ringlicht. Für andere Nischen bin ich trotzdem offen.</p>
+          <p data-animate style="margin: 0; text-wrap: pretty;">Nischen, die ich sowieso jeden Tag bediene: Outdoor, Sport und ein Straßenhund von Kos. Wald, See, Laufstrecke und Calisthenics-Park statt Sofa und Ringlicht. Für andere Nischen bin ich trotzdem offen.</p>
           <hr style="border: 0; border-top: 1px solid rgba(26,32,19,0.25); margin: 0; width: 60%; align-self: center;">
-          <p style="margin: 0; text-wrap: pretty;">Product-Reviews, Testimonials, Talking-Head, Problem-Solution und Green-Screen für App- oder Produkterklärungen. Egal ob draußen oder drin, gutes oder schlechtes Wetter, mit oder ohne Hund - Das Beste von Allem für deine Brand.</p>
+          <p data-animate style="margin: 0; text-wrap: pretty;">Product-Reviews, Testimonials, Talking-Head, Problem-Solution und Green-Screen für App- oder Produkterklärungen. Egal ob draußen oder drin, gutes oder schlechtes Wetter, mit oder ohne Hund — du erhältst das für dein Produkt passende Setup.</p>
         </div>
         <div style="display: flex; justify-content: center; margin-top: 44px;">
           <a href="#kontakt" style="display: inline-block; background: #1a2013; color: #f4efe0; font-weight: 800; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; padding: 16px 34px; border-radius: 999px;">LASS UNS QUATSCHEN</a>
         </div>
       </div>
 
-      <div data-photocol="true" style="display: flex; flex-direction: column; gap: 20px; padding-right: 24px;">
+      <div data-animate data-photocol="true" style="display: flex; flex-direction: column; gap: 20px; padding-right: 24px;">
         <img src="fotos/kiefernwald-koda.jpg" data-portrait="true" alt="Nico mit Koda im Kiefernwald" loading="lazy" decoding="async" style="width: 68%; margin-top: 48px; margin-left: auto; aspect-ratio: 3/4; object-fit: cover; object-position: 50% 50%; border-radius: 8px; display: block;">
         <img src="fotos/rucksack-huegel.jpg" alt="Nico mit Rucksack auf dem Hügel" loading="lazy" decoding="async" style="width: 241px; max-width: 100%; height: 228px; object-fit: cover; border-radius: 8px; display: block;">
         <img src="fotos/gipfel-stadt.jpg" alt="Nico mit Blick über die Stadt" loading="lazy" decoding="async" style="width: 329px; max-width: 100%; height: 265px; margin-left: auto; object-fit: cover; border-radius: 8px; display: block;">
@@ -283,30 +266,32 @@
     </div>
   </section>
 
+  <!-- ÜBER MICH -->
   <section id="ueber-mich" data-screen-label="Über mich" style="background: #2d3521; padding: 96px 0;">
     <div data-stackgrid="true" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr) minmax(0, 1fr); gap: 28px; align-items: start;">
 
-      <div data-photocol="true" style="display: flex; flex-direction: column; gap: 18px; padding-left: 24px;">
+      <div data-animate data-photocol="true" style="display: flex; flex-direction: column; gap: 18px; padding-left: 24px;">
         <img src="fotos/bank-stadt.jpg" data-portrait="true" alt="Nico in der Stadt" loading="lazy" decoding="async" style="width: 66%; aspect-ratio: 3/4; object-fit: cover; border-radius: 8px; display: block;">
         <img src="fotos/shaker-freisteller.png" data-portrait="true" alt="Nico mit Shaker" loading="lazy" decoding="async" style="width: 72%; margin-left: 5%; aspect-ratio: 3/4; object-fit: contain; display: block;">
       </div>
 
       <div data-textcol="true" style="padding: 0 12px;">
-        <h2 style="font-family: Anton, sans-serif; font-size: clamp(44px, 6vw, 92px); line-height: 0.95; text-transform: uppercase; text-align: center; margin: 0 0 12px; color: #f4efe0;">Mehr über mich</h2>
+        <h2 data-animate style="font-family: Anton, sans-serif; font-size: clamp(44px, 6vw, 92px); line-height: 0.95; text-transform: uppercase; text-align: center; margin: 0 0 12px; color: #f4efe0;">Mehr über mich</h2>
         <p style="text-align: center; font-size: 17px; color: #e8ddc0; margin: 0 0 40px;">Nico, 26, Neubrandenburg</p>
-        <ul style="list-style: none; margin: 0 auto; padding: 0; max-width: 620px; display: flex; flex-direction: column; gap: 28px; font-size: 22px; font-weight: 700; color: #f4efe0;">
+        <ul data-animate data-d="1" style="list-style: none; margin: 0 auto; padding: 0; max-width: 620px; display: flex; flex-direction: column; gap: 28px; font-size: 22px; font-weight: 700; color: #f4efe0;">
           <li>🏃 Laufen und Calisthenics im Freien</li>
           <li>🌲 Wald und See vor der Haustür</li>
           <li>🐕 Streuner(🇬🇷) privat nach Deutschland geholt</li>
           <li>☔ Bei jedem Wetter draußen</li>
           <li>💼 Selbstständig als Online-Marketer</li>
           <li>🛡️ Vorleben: Bundespolizei, davor Bundeswehr</li>
-          <li>📱 @kodafromgreece auf Instagram &amp; TikTok</li>
+          <li>📱 @kodafromgreece — Social-Media-Account von meinem Hund · 26.000+ Follower auf Instagram &amp; TikTok</li>
+          <li>🎬 @iamnico.ugc — mein persönlicher Account auf Instagram</li>
           <li>💪 Vorliebe für's Extreme</li>
         </ul>
       </div>
 
-      <div data-photocol="true" style="display: flex; flex-direction: column; gap: 18px; padding-right: 24px;">
+      <div data-animate data-photocol="true" style="display: flex; flex-direction: column; gap: 18px; padding-right: 24px;">
         <img src="fotos/koda-freisteller.png" data-portrait="true" alt="Nico und Koda" loading="lazy" decoding="async" style="width: 74%; margin-left: auto; aspect-ratio: 3/4; object-fit: contain; display: block;">
         <img src="uploads/IMG_20260913_150155.jpg" data-portrait="true" alt="Nico und Koda" loading="lazy" decoding="async" style="width: 60%; aspect-ratio: 3/4; object-fit: cover; border-radius: 8px; display: block;">
       </div>
@@ -314,31 +299,34 @@
     </div>
   </section>
 
+  <!-- KONTAKT -->
   <section id="kontakt" data-screen-label="Kontakt" style="background: #1a2013; padding: 100px 24px;">
     <div style="max-width: 820px; margin: 0 auto; text-align: center;">
-      <h2 style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 96px); line-height: 0.95; text-transform: uppercase; margin: 0 0 24px;">LASS UNS QUATSCHEN</h2>
-      <p style="font-size: 19px; color: #e8ddc0; margin: 0 0 14px; text-wrap: pretty;">Schreib mir per Mail oder direkt auf Instagram. Ich melde mich zurück.</p>
-      <p style="font-size: 17px; color: rgba(232,221,192,0.75); margin: 0 0 36px;">Nur Rohmaterial? Fertig geschnittenes Video? Mehrere Formate im Monat? Sag Bescheid.</p>
-      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
+      <h2 data-animate style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 96px); line-height: 0.95; text-transform: uppercase; margin: 0 0 24px;">LASS UNS QUATSCHEN</h2>
+      <p data-animate data-d="1" style="font-size: 19px; color: #e8ddc0; margin: 0 0 14px; text-wrap: pretty;">Schreib mir per Mail oder direkt auf Instagram. Ich melde mich zurück.</p>
+      <p data-animate data-d="1" style="font-size: 17px; color: rgba(232,221,192,0.75); margin: 0 0 36px;">Nur Rohmaterial? Fertig geschnittenes Video? Mehrere Formate im Monat? Sag Bescheid.</p>
+      <div data-animate data-d="2" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
         <a href="mailto:contact@nicosuske.com" style="display: inline-block; background: #aec48a; color: #1a2013; font-weight: 800; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; padding: 16px 34px; border-radius: 999px;">contact@nicosuske.com</a>
-        <a href="https://instagram.com/kodafromgreece" target="_blank" rel="noopener" style="display: inline-block; border: 2px solid rgba(244,239,224,0.4); color: #f4efe0; font-weight: 800; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; padding: 14px 32px; border-radius: 999px;">@kodafromgreece</a>
+        <a href="https://www.instagram.com/iamnico.ugc/" target="_blank" rel="noopener" style="display: inline-block; border: 2px solid rgba(244,239,224,0.4); color: #f4efe0; font-weight: 800; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; padding: 14px 32px; border-radius: 999px;">@iamnico.ugc</a>
       </div>
     </div>
   </section>
 
+  <!-- MARQUEE -->
   <div style="background: #aec48a; color: #1a2013; padding: 22px 0; overflow: hidden;" data-marquee-bar="true">
     <div style="display: flex; width: max-content; animation: marquee 28s linear infinite; font-family: Anton, sans-serif; font-size: 34px; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; will-change: transform; backface-visibility: hidden;">
-      <span>Outdoor-Ausrüstung&nbsp;·&nbsp;Lauf- &amp; Sportbekleidung&nbsp;·&nbsp;Supplements&nbsp;·&nbsp;Hundefutter&nbsp;·&nbsp;Hundezubehör&nbsp;·&nbsp;Und deine Nische&nbsp;·&nbsp;</span><span>Outdoor-Ausrüstung&nbsp;·&nbsp;Lauf- &amp; Sportbekleidung&nbsp;·&nbsp;Supplements&nbsp;·&nbsp;Hundefutter&nbsp;·&nbsp;Hundezubehör&nbsp;·&nbsp;Und deine Nische&nbsp;·&nbsp;</span><span>Outdoor-Ausrüstung&nbsp;·&nbsp;Lauf- &amp; Sportbekleidung&nbsp;·&nbsp;Supplements&nbsp;·&nbsp;Hundefutter&nbsp;·&nbsp;Hundezubehör&nbsp;·&nbsp;Und deine Nische&nbsp;·&nbsp;</span><span>Outdoor-Ausrüstung&nbsp;·&nbsp;Lauf- &amp; Sportbekleidung&nbsp;·&nbsp;Supplements&nbsp;·&nbsp;Hundefutter&nbsp;·&nbsp;Hundezubehör&nbsp;·&nbsp;Und deine Nische&nbsp;·&nbsp;</span>
+      <span>Outdoor-Ausrüstung&nbsp;·&nbsp;Lauf- &amp; Sportbekleidung&nbsp;·&nbsp;Supplements&nbsp;·&nbsp;Hundebedarf&nbsp;·&nbsp;Und deine Nische&nbsp;·&nbsp;</span><span>Outdoor-Ausrüstung&nbsp;·&nbsp;Lauf- &amp; Sportbekleidung&nbsp;·&nbsp;Supplements&nbsp;·&nbsp;Hundebedarf&nbsp;·&nbsp;Und deine Nische&nbsp;·&nbsp;</span><span>Outdoor-Ausrüstung&nbsp;·&nbsp;Lauf- &amp; Sportbekleidung&nbsp;·&nbsp;Supplements&nbsp;·&nbsp;Hundebedarf&nbsp;·&nbsp;Und deine Nische&nbsp;·&nbsp;</span><span>Outdoor-Ausrüstung&nbsp;·&nbsp;Lauf- &amp; Sportbekleidung&nbsp;·&nbsp;Supplements&nbsp;·&nbsp;Hundebedarf&nbsp;·&nbsp;Und deine Nische&nbsp;·&nbsp;</span>
     </div>
   </div>
 
+  <!-- FOOTER -->
   <footer style="background: #1a2013; border-top: 1px solid rgba(244,239,224,0.12); padding: 56px 24px;">
     <div style="max-width: 1180px; margin: 0 auto; position: relative; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; padding-bottom: 34px;">
       <div style="font-family: Anton, sans-serif; font-size: clamp(28px, 3vw, 44px); letter-spacing: 0.02em; text-transform: uppercase;">Nico Suske</div>
       <div style="font-size: 17px; color: #f4efe0;">UGC-Creator aus Neubrandenburg — Outdoor, Sport und Hunde-Marken.</div>
       <a href="mailto:contact@nicosuske.com" style="font-weight: 700; font-size: 17px; text-decoration: underline;">contact@nicosuske.com</a>
       <div style="display: flex; gap: 18px; align-items: center;">
-        <a href="https://instagram.com/kodafromgreece" target="_blank" rel="noopener" aria-label="Instagram" style="display: flex; align-items: center; justify-content: center; color: #f4efe0;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"></circle></svg></a>
+        <a href="https://www.instagram.com/iamnico.ugc/" target="_blank" rel="noopener" aria-label="Instagram" style="display: flex; align-items: center; justify-content: center; color: #f4efe0;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"></circle></svg></a>
         <a href="mailto:contact@nicosuske.com" aria-label="E-Mail" style="display: flex; align-items: center; justify-content: center; color: #f4efe0;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"></rect><path d="M3.5 7l8.5 6 8.5-6"></path></svg></a>
       </div>
       <div style="position: absolute; right: 0; bottom: 0; display: flex; gap: 14px; font-size: 12px; color: rgba(232,221,192,0.6);">
@@ -351,6 +339,15 @@
 
 </div>
 
-<script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+<script>
+document.getElementById('footer-year').textContent = new Date().getFullYear();
+document.documentElement.classList.add('js');
+var ao = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('in-view'); ao.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('[data-animate]').forEach(function(el) { ao.observe(el); });
+</script>
 </body>
 </html>
