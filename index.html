@@ -29,7 +29,7 @@
   img { filter: contrast(1.08) saturate(1.08) brightness(1.02); }
   @keyframes marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-25%,0,0); } }
 
-  /* Hero — simple, portfolio-style */
+  /* Hero */
   [data-hero-row] { display: flex; flex-wrap: wrap; align-items: center; gap: 48px; max-width: 1020px; margin: 0 auto; }
   [data-hero-text] { flex: 1 1 380px; }
   [data-hero-photo] { flex: 0 1 280px; }
@@ -49,19 +49,22 @@
     [data-leistungen-text] a { display: block !important; }
   }
 
-  /* Portfolio grid */
-  @media (max-width: 1000px) { [data-videogrid] { gap: 14px !important; } }
-  @media (max-width: 900px) { [data-videogrid] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
-  @media (max-width: 640px) {
-    [data-videogrid] { grid-template-columns: 1fr !important; max-width: 100% !important; margin: 0 !important; padding: 0 20px !important; box-sizing: border-box !important; gap: 30px !important; }
-    [data-videogrid] > div { max-width: 70% !important; }
-    [data-videogrid] > div:nth-child(odd) { margin-right: auto; margin-left: 0; }
-    [data-videogrid] > div:nth-child(even) { margin-left: auto; margin-right: 0; }
-    [data-marquee-bar] { font-size: 22px !important; }
-  }
+  /* Phone frames */
+  .phone { background: #1c1c1e; border-radius: 44px; padding: 10px; box-shadow: 0 0 0 2px #3a3a3a, 0 10px 36px rgba(0,0,0,0.28); width: 186px; }
+  .phone video { width: 100%; aspect-ratio: 9/16; border-radius: 34px; display: block; background: #000; object-fit: cover; }
+  .phone-row { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 12px; scrollbar-width: thin; scrollbar-color: rgba(32,37,27,0.18) transparent; }
+  .phone-card { flex-shrink: 0; }
+  .phone-label { text-align: center; margin: 10px 0 0; font-size: 12px; font-weight: 700; color: var(--ink-soft); letter-spacing: 0.03em; max-width: 186px; }
+  .client-block { margin-bottom: 72px; }
+  .client-block:last-child { margin-bottom: 0; }
+  .client-header { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; flex-wrap: wrap; }
+  .client-logo { height: 28px; width: auto; max-width: 130px; object-fit: contain; }
+  .client-name { font-family: Anton, sans-serif; font-size: 20px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink); }
+  .client-tag { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); background: var(--cream); border-radius: 999px; padding: 4px 12px; white-space: nowrap; }
+
   @media (max-width: 860px) { [data-section-pad] { padding-top: 56px !important; padding-bottom: 56px !important; } }
 
-  /* Über mich — single photo + text */
+  /* Über mich */
   @media (max-width: 860px) {
     [data-about-grid] { grid-template-columns: 1fr !important; text-align: center; }
     [data-about-photo] { margin: 0 auto 28px !important; max-width: 220px !important; }
@@ -122,12 +125,11 @@
         <p style="font-weight: 700; font-size: 17px; margin: 0 0 26px;">📍 Neubrandenburg, Mecklenburg-Vorpommern</p>
         <div style="display: flex; flex-direction: column; gap: 26px;">
           <div data-animate data-d="1">
-            <h3 style="font-size: 17px; font-weight: 800; margin: 0 0 12px;">Themen, die zu mir passen</h3>
+            <h3 style="font-size: 17px; font-weight: 800; margin: 0 0 12px;">Nischen, die ich bediene</h3>
             <ul style="list-style: disc; margin: 0; padding: 0 0 0 22px; display: flex; flex-direction: column; gap: 8px; font-size: 16.5px; line-height: 1.4;">
-              <li>🥾 Outdoor-Ausrüstung</li>
-              <li>👟 Lauf- &amp; Sportbekleidung</li>
-              <li>🥤 Supplements</li>
-              <li>🐕 Hundebedarf</li>
+              <li>🏕️ Outdoor-Content</li>
+              <li>🏃 Sport-Content</li>
+              <li>🐕 Hunde-Content</li>
               <li>➕ Und sicherlich auch deine Nische</li>
             </ul>
           </div>
@@ -146,36 +148,129 @@
         <a href="#kontakt" style="display: block; text-align: center; background: var(--accent); color: var(--paper); font-weight: 700; font-size: 15px; letter-spacing: 0.18em; text-transform: uppercase; padding: 22px 34px; border-radius: 999px;">Kontakt aufnehmen</a>
       </div>
 
-      <div data-animate data-d="1" style="display: flex; flex-direction: column; align-items: center; gap: 14px;">
-        <video src="videos/0922(2).mp4" controls playsinline preload="metadata" style="width: 100%; max-width: 300px; aspect-ratio: 9/16; object-fit: cover; border-radius: 10px; background: var(--cream-card); display: block;"></video>
-        <p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: var(--ink-soft); text-align: center;">Beispiel aus einem Kundenprojekt</p>
+      <div data-animate data-d="1" style="display: flex; justify-content: center;">
+        <video src="videos/vorstellungsvideo.mp4" controls playsinline preload="metadata" style="width: 100%; max-width: 300px; aspect-ratio: 9/16; object-fit: cover; border-radius: 10px; background: var(--cream-card); display: block;"></video>
       </div>
     </div>
   </section>
 
   <!-- PORTFOLIO -->
-  <section id="portfolio" data-screen-label="Portfolio" style="background: var(--cream-card); padding: 88px 24px;">
-    <div style="max-width: 1180px; margin: 0 auto;">
-      <h2 data-animate style="font-family: Anton, sans-serif; font-size: clamp(40px, 6.5vw, 88px); line-height: 0.95; text-transform: uppercase; text-align: center; margin: 0 0 48px; color: var(--accent);">Kundenprojekte</h2>
+  <section id="portfolio" data-screen-label="Portfolio" style="background: var(--cream-card); padding: 88px 0;">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 0 24px;">
+      <h2 data-animate style="font-family: Anton, sans-serif; font-size: clamp(40px, 6.5vw, 88px); line-height: 0.95; text-transform: uppercase; text-align: center; margin: 0 0 64px; color: var(--accent);">Kundenprojekte</h2>
 
-      <div data-videogrid="true" data-animate data-d="1" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; max-width: 1100px; margin: 0 auto; align-items: start;">
-        <div>
-          <p style="font-weight: 800; font-size: 16px; margin: 0 0 14px;">Ehrlicher Tipp</p>
-          <video src="videos/Ich%20zeige%20dir.mp4" controls playsinline preload="metadata" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; background: var(--cream); display: block;"></video>
+      <!-- Beispielvideos -->
+      <div class="client-block" data-animate>
+        <div class="client-header">
+          <span class="client-name">Beispielvideos</span>
+          <span class="client-tag">3 Videos</span>
         </div>
-        <div>
-          <p style="font-weight: 800; font-size: 16px; margin: 0 0 14px;">Emotionales Storytelling</p>
-          <video src="videos/Du%20f%C3%A4ngst%20nicht%20zum%20ersten%20Mal%20an.mp4" controls playsinline preload="metadata" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; background: var(--cream); display: block;"></video>
-        </div>
-        <div>
-          <p style="font-weight: 800; font-size: 16px; margin: 0 0 14px;">Problemlösung</p>
-          <video src="videos/R%C3%BCckruf(1).mp4" controls playsinline preload="metadata" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; background: var(--cream); display: block;"></video>
-        </div>
-        <div>
-          <p style="font-weight: 800; font-size: 16px; margin: 0 0 14px;">Ehrliche Empfehlung</p>
-          <video src="videos/Training(1).mp4" controls playsinline preload="metadata" style="width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; background: var(--cream); display: block;"></video>
+        <div class="phone-row">
+          <div class="phone-card">
+            <div class="phone"><video src="videos/beispiel-1%20(2).mp4" controls playsinline preload="metadata"></video></div>
+            <p class="phone-label">Beispiel 1</p>
+          </div>
+          <div class="phone-card">
+            <div class="phone"><video src="videos/beispiel-2.mp4" controls playsinline preload="metadata"></video></div>
+            <p class="phone-label">Beispiel 2</p>
+          </div>
+          <div class="phone-card">
+            <div class="phone"><video src="videos/beispiel-3.mp4" controls playsinline preload="metadata"></video></div>
+            <p class="phone-label">Beispiel 3</p>
+          </div>
         </div>
       </div>
+
+      <!-- Lotto Scanner -->
+      <div class="client-block" data-animate>
+        <div class="client-header">
+          <img src="logos/lotto-scanner.png" alt="Lotto Scanner" class="client-logo">
+          <span class="client-tag">3 Videos · verschiedene Hooks</span>
+        </div>
+        <div class="phone-row">
+          <div class="phone-card">
+            <div class="phone"><video src="videos/Dank%20dieser%20App(ohne%20UT).mp4" controls playsinline preload="metadata"></video></div>
+            <p class="phone-label">Hook: Dank dieser App</p>
+          </div>
+          <div class="phone-card">
+            <div class="phone"><video src="videos/Dschungel%20(ohne%20UT).mp4" controls playsinline preload="metadata"></video></div>
+            <p class="phone-label">Hook: Dschungel</p>
+          </div>
+          <div class="phone-card">
+            <div class="phone"><video src="videos/Anfangen%20ohne%20UT.mp4" controls playsinline preload="metadata"></video></div>
+            <p class="phone-label">Hook: Anfangen</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Douxo -->
+      <div class="client-block" data-animate>
+        <div class="client-header">
+          <img src="logos/douxo.png" alt="Douxo" class="client-logo">
+          <span class="client-tag">2 Videos · verschiedene Hooks</span>
+        </div>
+        <div class="phone-row">
+          <div class="phone-card">
+            <div class="phone"><video src="videos/Fellpflege%20von%20innen.mp4" controls playsinline preload="metadata"></video></div>
+            <p class="phone-label">Fellpflege von Innen</p>
+          </div>
+          <div class="phone-card">
+            <div class="phone"><video src="videos/Fellpflege-Hack.mp4" controls playsinline preload="metadata"></video></div>
+            <p class="phone-label">Fellpflege-Hack</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Discpl -->
+      <div class="client-block" data-animate>
+        <div class="client-header">
+          <img src="logos/discpl.png" alt="DISCPL" class="client-logo">
+          <span class="client-tag">1 Video · Emotionales Storytelling</span>
+        </div>
+        <div class="phone-row">
+          <div class="phone-card">
+            <div class="phone"><video src="videos/Du%20f%C3%A4ngst%20nicht%20zum%20ersten%20Mal%20an.mp4" controls playsinline preload="metadata"></video></div>
+            <p class="phone-label">Du fängst nicht zum ersten Mal an</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dorkslav -->
+      <div class="client-block" data-animate>
+        <div class="client-header">
+          <span class="client-name">Dorkslav</span>
+          <span class="client-tag">3 Videos · verschiedene Inhalte</span>
+        </div>
+        <div class="phone-row">
+          <div class="phone-card">
+            <div class="phone"><video src="videos/R%C3%BCckruf(1).mp4" controls playsinline preload="metadata"></video></div>
+            <p class="phone-label">Rückruf · Problemlösung</p>
+          </div>
+          <div class="phone-card">
+            <div class="phone"><video src="videos/Leinenf%C3%BChrigkeit(1).mp4" controls playsinline preload="metadata"></video></div>
+            <p class="phone-label">Leinenführigkeit · Problemlösung</p>
+          </div>
+          <div class="phone-card">
+            <div class="phone"><video src="videos/Training(1).mp4" controls playsinline preload="metadata"></video></div>
+            <p class="phone-label">Training · Mäkeliger Hund</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Azubiyo -->
+      <div class="client-block" data-animate>
+        <div class="client-header">
+          <img src="logos/azubiyo-logo.jpg" alt="Azubiyo" class="client-logo">
+          <span class="client-tag">1 Video</span>
+        </div>
+        <div class="phone-row">
+          <div class="phone-card">
+            <div class="phone"><video src="videos/azubiyo.mp4" controls playsinline preload="metadata"></video></div>
+            <p class="phone-label">Azubiyo</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -291,8 +386,8 @@
 
   <!-- MARQUEE -->
   <div style="background: var(--accent-light); color: var(--dark); padding: 20px 0; overflow: hidden;" data-marquee-bar="true">
-    <div style="display: flex; width: max-content; animation: marquee 28s linear infinite; font-family: Anton, sans-serif; font-size: 32px; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; will-change: transform; backface-visibility: hidden;">
-      <span>Outdoor-Ausrüstung&nbsp;·&nbsp;Lauf- &amp; Sportbekleidung&nbsp;·&nbsp;Supplements&nbsp;·&nbsp;Hundebedarf&nbsp;·&nbsp;Und deine Nische&nbsp;·&nbsp;</span><span>Outdoor-Ausrüstung&nbsp;·&nbsp;Lauf- &amp; Sportbekleidung&nbsp;·&nbsp;Supplements&nbsp;·&nbsp;Hundebedarf&nbsp;·&nbsp;Und deine Nische&nbsp;·&nbsp;</span><span>Outdoor-Ausrüstung&nbsp;·&nbsp;Lauf- &amp; Sportbekleidung&nbsp;·&nbsp;Supplements&nbsp;·&nbsp;Hundebedarf&nbsp;·&nbsp;Und deine Nische&nbsp;·&nbsp;</span><span>Outdoor-Ausrüstung&nbsp;·&nbsp;Lauf- &amp; Sportbekleidung&nbsp;·&nbsp;Supplements&nbsp;·&nbsp;Hundebedarf&nbsp;·&nbsp;Und deine Nische&nbsp;·&nbsp;</span>
+    <div style="display: flex; width: max-content; animation: marquee 32s linear infinite; font-family: Anton, sans-serif; font-size: 32px; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; will-change: transform; backface-visibility: hidden;">
+      <span>Outdoor-Content&nbsp;·&nbsp;Outdoor-Ausrüstung&nbsp;·&nbsp;Sport-Content&nbsp;·&nbsp;Lauf- &amp; Sportbekleidung&nbsp;·&nbsp;Hunde-Content&nbsp;·&nbsp;Hundebedarf&nbsp;·&nbsp;Und deine Nische&nbsp;·&nbsp;</span><span>Outdoor-Content&nbsp;·&nbsp;Outdoor-Ausrüstung&nbsp;·&nbsp;Sport-Content&nbsp;·&nbsp;Lauf- &amp; Sportbekleidung&nbsp;·&nbsp;Hunde-Content&nbsp;·&nbsp;Hundebedarf&nbsp;·&nbsp;Und deine Nische&nbsp;·&nbsp;</span><span>Outdoor-Content&nbsp;·&nbsp;Outdoor-Ausrüstung&nbsp;·&nbsp;Sport-Content&nbsp;·&nbsp;Lauf- &amp; Sportbekleidung&nbsp;·&nbsp;Hunde-Content&nbsp;·&nbsp;Hundebedarf&nbsp;·&nbsp;Und deine Nische&nbsp;·&nbsp;</span><span>Outdoor-Content&nbsp;·&nbsp;Outdoor-Ausrüstung&nbsp;·&nbsp;Sport-Content&nbsp;·&nbsp;Lauf- &amp; Sportbekleidung&nbsp;·&nbsp;Hunde-Content&nbsp;·&nbsp;Hundebedarf&nbsp;·&nbsp;Und deine Nische&nbsp;·&nbsp;</span>
     </div>
   </div>
 
