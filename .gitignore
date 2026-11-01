@@ -2,3 +2,6 @@
 .netlify
 
 .vercel
+
+# Local dev tooling
+.claude
